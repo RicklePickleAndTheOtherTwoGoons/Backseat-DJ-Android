@@ -15,15 +15,97 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.766" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/buttonDuck"
         android:layout_width="102dp"
-        android:layout_height="55dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="173dp"
         android:onClick="btnTest_OnClick"
-        android:text="Button"
-        tools:layout_editor_absoluteX="141dp"
-        tools:layout_editor_absoluteY="283dp" />
+        android:text="@string/duck"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonStartRoom" />
+
+    <EditText
+        android:id="@+id/editSpotifyLink"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="12dp"
+        android:layout_marginEnd="21dp"
+        android:layout_marginStart="21dp"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:hint="@string/spotify_link"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/buttonSubmit"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/editRoomCodeInput"
+        android:layout_width="0dp"
+        android:layout_height="41dp"
+        android:layout_marginEnd="13dp"
+        android:layout_marginStart="26dp"
+        android:ems="10"
+        android:hint="@string/room_code"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toStartOf="@+id/buttonSubmit"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/buttonSubmit" />
+
+    <Button
+        android:id="@+id/buttonSubmit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="24dp"
+        android:layout_marginEnd="21dp"
+        android:text="@string/submit"
+        app:layout_constraintBottom_toTopOf="@+id/textView2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/editRoomCodeInput"
+        app:layout_constraintTop_toBottomOf="@+id/editSpotifyLink" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:layout_marginStart="24dp"
+        android:text="@string/or"
+        app:layout_constraintBottom_toTopOf="@+id/buttonStartRoom"
+        app:layout_constraintStart_toStartOf="@+id/editRoomCodeOutput"
+        app:layout_constraintTop_toBottomOf="@+id/buttonSubmit" />
+
+    <EditText
+        android:id="@+id/editRoomCodeOutput"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="5dp"
+        android:ems="10"
+        android:enabled="false"
+        android:hint="@string/room_code"
+        android:inputType="textPersonName"
+        android:singleLine="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/buttonStartRoom"
+        app:layout_constraintTop_toTopOf="@+id/buttonStartRoom" />
+
+    <Button
+        android:id="@+id/buttonStartRoom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="50dp"
+        android:layout_marginStart="13dp"
+        android:text="@string/start_room"
+        app:layout_constraintBottom_toTopOf="@+id/buttonDuck"
+        app:layout_constraintEnd_toStartOf="@+id/editRoomCodeOutput"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
 </android.support.constraint.ConstraintLayout>
