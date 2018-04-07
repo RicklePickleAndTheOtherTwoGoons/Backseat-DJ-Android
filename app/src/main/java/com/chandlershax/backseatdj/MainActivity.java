@@ -29,7 +29,7 @@ public class MainActivity extends Activity implements
     private Player mPlayer;
 
     // Request code that will be used to verify if the result comes from correct activity
-// Can be any integer
+    // Can be any integer
     private static final int REQUEST_CODE = 1337;
 
     @Override
@@ -47,6 +47,9 @@ public class MainActivity extends Activity implements
         AuthenticationRequest request = builder.build();
 
         AuthenticationClient.openLoginActivity(this, REQUEST_CODE, request);
+
+        QueueController.GetNextSong();
+
     }
 
     @Override
@@ -105,7 +108,7 @@ public class MainActivity extends Activity implements
     public void onLoggedIn() {
         Log.d("MainActivity", "User logged in");
         TextView tv = findViewById(R.id.txtWorld);
-        mPlayer.playUri(null, "spotify:track:5ni5ySIqZfGBNYbvnwRnWR", 0, 0);
+        mPlayer.playUri(null, "spotify:track:20R2rF8szcx4VNA6FDRKwo", 0, 0);
         tv.setText("If you're dad is name mark for the love of god clap your hands");
 
     }
