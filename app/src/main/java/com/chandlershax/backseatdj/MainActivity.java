@@ -104,8 +104,10 @@ public class MainActivity extends Activity implements
     @Override
     public void onLoggedIn() {
         Log.d("MainActivity", "User logged in");
+        TextView tv = findViewById(R.id.txtWorld);
+        mPlayer.playUri(null, "spotify:track:5ni5ySIqZfGBNYbvnwRnWR", 0, 0);
+        tv.setText("If you're dad is name mark for the love of god clap your hands");
 
-        mPlayer.playUri(null, "spotify:track:2TpxZ7JUBn3uw46aR7qd6V", 0, 0);
     }
 
     @Override
@@ -131,7 +133,9 @@ public class MainActivity extends Activity implements
     public void btnTest_OnClick(View v) {
 
         TextView tv = findViewById(R.id.txtWorld);
-        tv.setText("Horatio Caine was a great character in CSI Miami");
+        tv.setText("Stop fucking clapping!");
+        mPlayer.pause(null);
+
 
 
     }
