@@ -10,7 +10,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 
 public class QueueController {
-    Song newSong = new Song("",0);
+    public static Song newSong = new Song("",0);
 
     public static String GetNextSong() {
         Log.d("QueueController","Test");

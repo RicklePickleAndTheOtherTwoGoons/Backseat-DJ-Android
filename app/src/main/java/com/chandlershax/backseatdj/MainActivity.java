@@ -24,6 +24,8 @@ import com.spotify.sdk.android.player.Spotify;
 import com.spotify.sdk.android.player.SpotifyPlayer;
 import com.spotify.sdk.android.player.PlaybackState;
 
+import java.util.Random;
+
 
 public class MainActivity extends Activity implements
         SpotifyPlayer.NotificationCallback, ConnectionStateCallback {
@@ -163,15 +165,20 @@ public class MainActivity extends Activity implements
 
     }
 
-    public void buttonStartRooom_onClick(View v) {
-
+    public void buttonStartRoom_onClick(View v) {
+        String code = "";
+        char[] chars = {'A', 'B', 'C', 'D', 'E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'};
+        for (int i=0;i<4;i++) {
+            Random rand = new Random();
+            code += chars[rand.nextInt(chars.length)];
+        }
         // Send a request for a new room id to firebase.
         DatabaseReference db = FirebaseDatabase.getInstance().getReference();
         // Wait for a response from firebase.
 
         // Set the roomCodeoutput textbox to the code we got back.
         EditText roomCodeOutput = findViewById(R.id.editRoomCodeOutput);
-        roomCodeOutput.setText("CODE");
+        roomCodeOutput.setText(code);
     }
 
     public void buttonSubmit_onClick(View v) {
