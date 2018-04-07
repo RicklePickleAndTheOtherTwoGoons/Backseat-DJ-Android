@@ -29,7 +29,7 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     //DEWEY WAS HERE
     // This library handles authentication and authorization
-    //implementation ' com.spotify.android:auth:1.1.0'
+    implementation ' com.spotify.sk:spotify-auth-1.0.0-beta12@aar'
 
     // This library handles music playback
     implementation 'com.spotify.sdk:spotify-player:24-noconnect-2.20b@aar'
