@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "1097204144090",
+    "firebase_url": "https://backseatdj-a87b3.firebaseio.com",
+    "project_id": "backseatdj-a87b3",
+    "storage_bucket": "backseatdj-a87b3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1097204144090:android:be469119631ff8bd",
+        "android_client_info": {
+          "package_name": "com.chandlershax.backseatdj"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1097204144090-q4epq7680a5lggqpf6u4h7m7aall8p8k.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.chandlershax.backseatdj",
+            "certificate_hash": "79caa3d5a5ec6239ff76ce6d7a2fbcf46966cb09"
+          }
+        },
+        {
+          "client_id": "1097204144090-0gv24mn9lj6f3l7p2p80260p45ca4l4l.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBsXKxV-DkUMdYxp2TjbO9vCXaSWAJ0OUA"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1097204144090-0gv24mn9lj6f3l7p2p80260p45ca4l4l.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
