@@ -21,8 +21,10 @@ public class QueueController {
         nextSong.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                Song newSong = dataSnapshot.getValue(Song.class);
+                String songKey = dataSnapshot.getKey();
                 Log.d("QueueController", "The database thingy worked");
-                Log.d("QueueController", dataSnapshot.getValue().toString());
+                Log.d("QueueController", newSong.song);
             }
 
             @Override
