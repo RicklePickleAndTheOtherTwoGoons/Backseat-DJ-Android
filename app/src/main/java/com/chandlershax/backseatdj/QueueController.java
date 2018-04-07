@@ -10,9 +10,9 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 
 public class QueueController {
+    Song newSong = new Song("",0);
 
-
-    public static void GetNextSong() {
+    public static String GetNextSong() {
         Log.d("QueueController","Test");
         DatabaseReference database = FirebaseDatabase.getInstance().getReference();
         DatabaseReference sessionsRef = database.child("queues/");
@@ -21,7 +21,7 @@ public class QueueController {
         nextSong.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                Song newSong = dataSnapshot.getValue(Song.class);
+                newSong = dataSnapshot.getValue(Song.class);
                 String songKey = dataSnapshot.getKey();
                 Log.d("QueueController", "The database thingy worked");
                 Log.d("QueueController", newSong.song);
@@ -29,14 +29,17 @@ public class QueueController {
 
             @Override
             public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
             }
 
             @Override
             public void onChildRemoved(DataSnapshot dataSnapshot) {
+
             }
 
             @Override
             public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
             }
 
             @Override
@@ -45,6 +48,7 @@ public class QueueController {
 
             }
         });
+        return newSong.song;
     }
 
     public static void TestQueueController() {
