@@ -34,12 +34,15 @@ public class MainActivity extends Activity implements
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        //Authentication bullshit
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         AuthenticationRequest.Builder builder = new AuthenticationRequest.Builder(CLIENT_ID,
                 AuthenticationResponse.Type.TOKEN,
                 REDIRECT_URI);
+
+        //Change scope over here          vvvvvvvvvvvvvvvvvv
         builder.setScopes(new String[]{"user-read-private", "streaming"});
         AuthenticationRequest request = builder.build();
 
