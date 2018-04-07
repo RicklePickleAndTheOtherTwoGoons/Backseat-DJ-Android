@@ -2,12 +2,16 @@ package com.chandlershax.backseatdj;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Editable;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.app.Activity;
 import android.content.Intent;
 import android.util.Log;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.spotify.sdk.android.authentication.AuthenticationClient;
 import com.spotify.sdk.android.authentication.AuthenticationRequest;
 import com.spotify.sdk.android.authentication.AuthenticationResponse;
@@ -18,6 +22,8 @@ import com.spotify.sdk.android.player.Player;
 import com.spotify.sdk.android.player.PlayerEvent;
 import com.spotify.sdk.android.player.Spotify;
 import com.spotify.sdk.android.player.SpotifyPlayer;
+import com.spotify.sdk.android.player.PlaybackState;
+
 
 public class MainActivity extends Activity implements
         SpotifyPlayer.NotificationCallback, ConnectionStateCallback {
@@ -27,10 +33,24 @@ public class MainActivity extends Activity implements
     private static final String REDIRECT_URI = "backseatdj://callback";
 
     private Player mPlayer;
+    private PlaybackState mCurrentPlaybackState;
+
 
     // Request code that will be used to verify if the result comes from correct activity
     // Can be any integer
     private static final int REQUEST_CODE = 1337;
+
+    private final Player.OperationCallback mOperationCallback = new Player.OperationCallback() {
+        @Override
+        public void onSuccess() {
+           System.out.println("SUCCESS!");
+        }
+
+        @Override
+        public void onError(Error error) {
+            System.out.println("NOT OK");
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,12 +107,8 @@ public class MainActivity extends Activity implements
     @Override
     public void onPlaybackEvent(PlayerEvent playerEvent) {
         Log.d("MainActivity", "Playback event received: " + playerEvent.name());
-        switch (playerEvent) {
-            // Handle event type as necessary
-            default:
-                break;
+        mCurrentPlaybackState = mPlayer.getPlaybackState();
         }
-    }
 
     @Override
     public void onPlaybackError(Error error) {
@@ -137,9 +153,39 @@ public class MainActivity extends Activity implements
 
         TextView tv = findViewById(R.id.txtWorld);
         tv.setText("Stop fucking clapping!");
-        mPlayer.pause(null);
+        if (mCurrentPlaybackState != null && mCurrentPlaybackState.isPlaying) {
+            mPlayer.pause(mOperationCallback);
+            tv.setText("Stop fucking clapping!");
+        } else {
+            mPlayer.resume(mOperationCallback);
+            tv.setText("CLAP MOTHERFUCKERS!");
+        }
 
+    }
 
+    public void buttonStartRooom_onClick(View v) {
+
+        // Send a request for a new room id to firebase.
+        DatabaseReference db = FirebaseDatabase.getInstance().getReference();
+        // Wait for a response from firebase.
+
+        // Set the roomCodeoutput textbox to the code we got back.
+        EditText roomCodeOutput = findViewById(R.id.editRoomCodeOutput);
+        roomCodeOutput.setText("CODE");
+    }
+
+    public void buttonSubmit_onClick(View v) {
+        // Gather the URL and Room Code from the appropriate text boxes.
+        EditText roomCodeInput = findViewById(R.id.editRoomCodeInput);
+        Editable roomCodeEditable = roomCodeInput.getText();
+        String roomCode = roomCodeEditable.toString();
+
+        EditText urlInput = findViewById(R.id.editSpotifyLink);
+        Editable urlEditable = roomCodeInput.getText();
+        String urlCode = roomCodeEditable.toString();
+
+        // Send firebase the URL and the Room Code.
+        DatabaseReference db = FirebaseDatabase.getInstance().getReference();
 
     }
 }
